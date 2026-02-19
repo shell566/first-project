@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+from rich.console import Console
+from rich.text import Text
+
+console = Console()
+
 a = """              .__                     __                .__   
   ____ _____  |  |   ____           _/  |_  ____   ____ |  |  
 _/ ___\\__  \ |  | _/ ___\   ______ \   __\/  _ \ /  _ \|  |  
@@ -7,23 +12,26 @@ _/ ___\\__  \ |  | _/ ___\   ______ \   __\/  _ \ /  _ \|  |
  \___  >____  /____/\___  >          |__|  \____/ \____/|____/
      \/     \/          \/                                    """
 
-print(a)
-print("-----------------------------------")
+text = Text(a)
+text.stylize("bold cyan")  # لون عام للشعار كله
 
-x = float(input("Enter the first number: "))
-y = float(input("Enter the second number: "))
-op = input("Enter the operation (+, -, /, *): ")
+console.print(text)
+console.print("[bold yellow]----------- calc-tool -----------[/bold yellow]")
+
+x = float(console.input("[green]Enter the first number:[/green] "))
+y = float(console.input("[green]Enter the second number:[/green] "))
+op = console.input("[magenta]Enter the operation (+, -, /, *):[/magenta] ")
 
 if op == "+":
-    print(x + y)
+    console.print(f"[bold blue]Result:[/bold blue] {x + y}")
 elif op == "-":
-    print(x - y)
+    console.print(f"[bold blue]Result:[/bold blue] {x - y}")
 elif op == "/":
     if y != 0:
-        print(x / y)
+        console.print(f"[bold blue]Result:[/bold blue] {x / y}")
     else:
-        print("Error: Division by zero")
+        console.print("[bold red]Error: Division by zero[/bold red]")
 elif op == "*":
-    print(x * y)
+    console.print(f"[bold blue]Result:[/bold blue] {x * y}")
 else:
-    print("Error: Invalid operation")
+    console.print("[bold red]Error: Invalid operation[/bold red]")
